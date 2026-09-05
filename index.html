@@ -80,14 +80,30 @@
 
         <footer class="hub-footer">
             <p class="disclaimer">Want to help advocate? Share this resource card with someone who needs it.</p>
-            <a href="https://addtoany.com" target="_blank" class="wa-share-btn">
-                Share via WhatsApp 💬
-            </a>
+            <button class="wa-share-btn" onclick="shareWebsite()">
+                Share this Hub 💬
+            </button>
             <p class="tagline">Built by Zim Youth • For Zim Youth</p>
         </footer>
     </main>
 
     <p class="site-copyright">&copy; 2026 The SafeHouse Zim. All rights reserved.</p>
+        <!-- Add this script right before the closing body tag -->
+    <script>
+    function shareWebsite() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'The Safehouse Zim',
+                text: 'Hey! If you ever need a safe, judgment-free space or need someone to talk to, check out this youth resource directory:',
+                url: 'https://thesafehousezim.co.zw'
+            }).catch(console.error);
+        } else {
+            // Fallback for older desktop browsers that don't support native sharing
+            window.open('https://whatsapp.com', '_blank');
+        }
+    }
+    </script>
+
 
 </body>
 </html>
